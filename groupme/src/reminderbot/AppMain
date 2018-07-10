@@ -1,8 +1,9 @@
-from processors.RequestProcessor import RequestProcessor
+from src.reminderbot.processors.RequestProcessor import RequestProcessor
 
 def main():
     rp = RequestProcessor()
     rp.printRecentMessages()
+
     print("Hello World")
 
 
