@@ -1,0 +1,10 @@
+from processors.RequestProcessor import RequestProcessor
+
+def main():
+    rp = RequestProcessor()
+    rp.printRecentMessages()
+    print("Hello World")
+
+
+if __name__ == "__main__":
+    main()
