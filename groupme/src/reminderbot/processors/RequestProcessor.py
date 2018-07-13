@@ -1,3 +1,4 @@
+import os
 import requests
 import time
 
@@ -20,7 +21,7 @@ class RequestProcessor:
         return latitude, longitude
 
     def printRecentMessages(self):
-        request_params = {'token': 'SlxENrNwb5ZSWVlRk2H5SyKIHjDQyg6pGYmNHqnS'}
+        request_params = {'token': os.getenv('BOT_ID')}
 
         while True:
             response = self.getResponse(request_params);
