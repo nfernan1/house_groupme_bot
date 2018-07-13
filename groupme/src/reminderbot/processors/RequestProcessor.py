@@ -21,7 +21,7 @@ class RequestProcessor:
         return latitude, longitude
 
     def printRecentMessages(self):
-        request_params = {'token': os.getenv('BOT_ID')}
+        request_params = {'token': os.getenv("ACCESS_TOKEN")}
 
         while True:
             response = self.getResponse(request_params);
@@ -41,7 +41,7 @@ class RequestProcessor:
                             current_weather = weather_response['properties']['periods'][0]['detailedForecast']
 
                             # Send the response to the group
-                            post_params = { 'bot_id' : 'e1a7cb871997cab3e8e7b581ea', 'text': current_weather }
+                            post_params = { 'bot_id' : os.getenv("BOT_ID"), 'text': current_weather }
                             requests.post('https://api.groupme.com/v3/bots/post', post_params)
                             request_params['since_id'] = message['id']
                             break
