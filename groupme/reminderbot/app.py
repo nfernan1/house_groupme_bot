@@ -1,14 +1,15 @@
 import sys
 
-from src.reminderbot.processors.RequestProcessor import RequestProcessor
 import os
-import json
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 from flask import Flask, request
 
 app = Flask(__name__)
 
+@app.route('/')
+def index():
+    return "Yo, it's working!"
 
 @app.route('/', methods=['POST'])
 def webhook():
@@ -38,12 +39,6 @@ def log(msg):
     print(str(msg))
     sys.stdout.flush()
 
-# def main():
-#     rp = RequestProcessor()
-#     rp.printRecentMessages()
-#
-#     print("Hello World")
-#
-#
-# if __name__ == "__main__":
-#     main()
+
+if __name__ == "__main__":
+    app.run(debug=True, use_reloader=True)
