@@ -42,13 +42,3 @@ def log(msg):
 
 if __name__ == "__main__":
     app.run(debug=True, use_reloader=True)
-
-# def main():
-#     rp = RequestProcessor()
-#     rp.printRecentMessages()
-#
-#     print("Hello World")
-#
-#
-# if __name__ == "__main__":
-#     main()

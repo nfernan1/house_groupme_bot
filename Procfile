@@ -1,1 +1,1 @@
-web: gunicorn app:reminderbot --log-file=-
+web: gunicorn groupme.reminderbot.app:app --log-file=-
