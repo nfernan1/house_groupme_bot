@@ -1,9 +1,11 @@
-import sys
-
 import os
+import sys
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
+
 from flask import Flask, request
+
+from .src.processors.RequestProcessor import RequestProcessor
 
 app = Flask(__name__)
 
@@ -15,11 +17,13 @@ def index():
 def webhook():
     data = request.get_json()
     log('Received {}'.format(data))
+    rp = RequestProcessor()
+    rp.printRecentMessages()
 
-    # We don't want to reply to ourselves!
-    if data['name'].lower() != 'reminderbot':
-        msg = '{}, you sent "{}".'.format(data['name'], data['text'])
-        send_message(msg)
+    # # We don't want to reply to ourselves!
+    # if data['name'].lower() != 'reminderbot':
+    #     msg = '{}, you sent "{}".'.format(data['name'], data['text'])
+    #     send_message(msg)
 
     return "ok", 200
 

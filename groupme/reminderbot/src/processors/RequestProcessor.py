@@ -1,6 +1,5 @@
 import os
 import requests
-import time
 
 class RequestProcessor:
 
@@ -9,8 +8,7 @@ class RequestProcessor:
 
     def getResponse(self, request_params):
 
-        response = requests.get('https://api.groupme.com/v3/groups/41786620/messages',
-                                         request_params)
+        response = requests.get('https://api.groupme.com/v3/groups/41786620/messages', request_params)
         return response
 
     def getCoordinates(self, city):
@@ -40,8 +38,6 @@ class RequestProcessor:
                             weather_response = requests.get('https://api.weather.gov/points/' + lat + ',' + lng + '/forecast').json()
                             current_weather = weather_response['properties']['periods'][0]['detailedForecast']
 
-                            # Send the response to the group
-                            post_params = { 'bot_id' : os.getenv("BOT_ID"), 'text': current_weather }
-                            requests.post('https://api.groupme.com/v3/bots/post', post_params)
+
                             request_params['since_id'] = message['id']
                             break
