@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c50fac93-a8f1-4180-a0f4-dc49966eadec" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/reminderbot/AppMain" beforeDir="false" afterPath="$PROJECT_DIR$/src/reminderbot/AppMain" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reminderbot/AppMain" beforeDir="false" afterPath="$PROJECT_DIR$/src/reminderbot/app.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,7 +31,7 @@
       <file leaf-file-name="RequestProcessor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/reminderbot/processors/RequestProcessor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
+            <state relative-caret-position="277">
               <caret line="42" column="60" lean-forward="true" selection-start-line="42" selection-start-column="60" selection-end-line="42" selection-end-column="60" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -41,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AppMain" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/reminderbot/AppMain">
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/reminderbot/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="-10">
+              <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -200,7 +199,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/reminderbot/AppMain" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/reminderbot/app.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -242,16 +241,15 @@
       <option name="presentableId" value="Default" />
       <updated>1531192141379</updated>
       <workItem from="1531192143036" duration="450000" />
-      <workItem from="1531461209408" duration="3282000" />
+      <workItem from="1531461209408" duration="3771000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3732000" />
+    <option name="totallyTimeSpent" value="4221000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1276" height="777" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -262,11 +260,11 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32941177" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32941177" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24959481" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24959481" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -298,16 +296,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/reminderbot/processors/RequestProcessor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="42" column="60" lean-forward="true" selection-start-line="42" selection-start-column="60" selection-end-line="42" selection-end-column="60" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/reminderbot/database/PostgresConnector.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -318,10 +306,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/reminderbot/AppMain">
+    <entry file="file://$PROJECT_DIR$/src/reminderbot/processors/RequestProcessor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="277">
+          <caret line="42" column="60" lean-forward="true" selection-start-line="42" selection-start-column="60" selection-end-line="42" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reminderbot/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10">
+          <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
