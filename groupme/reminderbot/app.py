@@ -2,6 +2,7 @@ import os
 import sys
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
+import requests
 
 from flask import Flask, request
 
@@ -18,7 +19,7 @@ def webhook():
     data = request.get_json()
     log('Received {}'.format(data))
     rp = RequestProcessor()
-    rp.printRecentMessages()
+    rp.printRecentMessages(data)
 
     # # We don't want to reply to ourselves!
     # if data['name'].lower() != 'reminderbot':
@@ -26,17 +27,6 @@ def webhook():
     #     send_message(msg)
 
     return "ok", 200
-
-
-def send_message(msg):
-    url = 'https://api.groupme.com/v3/bots/post'
-
-    data = {
-        'bot_id': os.getenv('BOT_ID'),
-        'text': msg,
-    }
-    botRequest = Request(url, urlencode(data).encode())
-    jsonResponse = urlopen(botRequest).read().decode()
 
 
 def log(msg):
