@@ -115,9 +115,12 @@ class RequestProcessor:
 
                 cur.execute(query)
 
+                tableItemContents = ""
                 for table in cur.fetchall():
-                    Log.debug(table)
-                    self.send_message(table)
+                    tableItemContents += table[0]
+                    tableItemContents += " "
 
+                Log.debug("Shared: {}".format(tableItemContents))
+                self.send_message("Shared: {},".format(tableItemContents))
                 conn.commit()
                 conn.close()
