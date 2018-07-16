@@ -1,4 +1,5 @@
 import psycopg2
+from psycopg2 import sql
 import requests
 import os
 from ..controllers.Log import Log
@@ -54,25 +55,69 @@ class RequestProcessor:
                 Log.debug("WeatherRs: {}".format(current_weather))
                 self.send_message(current_weather)
 
-            elif reminderBotRq[1].lower() == "weather":
+            elif reminderBotRq[1].lower() == "add":
                 itemName = ""
                 for item in reminderBotRq[2:]:
-                    if item != "to":
-                        item += itemName
+                    if item == "to":
+                        break
+                    itemName += item
+                    itemName += " "
 
-                DATABASE_URL = os.environ['DATABASE_URL']
-                conn = psycopg2.connect(database=DATABASE_URL,
-                                             user='liomjizjcckrtw',
-                                             password='aa34a6b5ee9b3e0d8a945a4413d5479908a1d44cbc987a4f5060840c1d680412',
-                                             host='ec2-107-22-169-45.compute-1.amazonaws.com',
-                                             port='5432',
-                                             sslmode='require')
-                Log.debug("Connection: {}".format(conn))
-
+                table = reminderBotRq[-1]
                 addUser = data['name']
-                sql = """INSERT INTO shared VALUES(%s);"""
-                cur = conn.createCursor()
-                Log.debug("User: {} Item: {}".format(addUser, itemName))
-                cur.execute(sql, (addUser, itemName))
+                conn = psycopg2.connect(database='devlpvf6ln40ak',
+                                         user='liomjizjcckrtw',
+                                         password='aa34a6b5ee9b3e0d8a945a4413d5479908a1d44cbc987a4f5060840c1d680412',
+                                         host='ec2-107-22-169-45.compute-1.amazonaws.com',
+                                         port='5432',
+                                         sslmode='require')
+                cur = conn.cursor()
+                query = sql.SQL("INSERT INTO {} (adduser, item) VALUES(%s, %s);")\
+                            .format(sql.Identifier(table))
+
+                cur.execute(query, (addUser, itemName))
+                conn.commit()
+                conn.close()
+            elif reminderBotRq[1].lower() == "rm":
+                itemName = ""
+                for item in reminderBotRq[2:]:
+                    if item == "from":
+                        break
+                    itemName += item
+                    itemName += " "
+
+                table = reminderBotRq[-1]
+                conn = psycopg2.connect(database='devlpvf6ln40ak',
+                                        user='liomjizjcckrtw',
+                                        password='aa34a6b5ee9b3e0d8a945a4413d5479908a1d44cbc987a4f5060840c1d680412',
+                                        host='ec2-107-22-169-45.compute-1.amazonaws.com',
+                                        port='5432',
+                                        sslmode='require')
+                cur = conn.cursor()
+                query = sql.SQL("DELETE FROM {} WHERE item = %s;") \
+                    .format(sql.Identifier(table))
+
+                cur.execute(query, (itemName, ))
+                conn.commit()
+                conn.close()
+            elif reminderBotRq[1].lower() == "show":
+
+                table = reminderBotRq[-1]
+                conn = psycopg2.connect(database='devlpvf6ln40ak',
+                                        user='liomjizjcckrtw',
+                                        password='aa34a6b5ee9b3e0d8a945a4413d5479908a1d44cbc987a4f5060840c1d680412',
+                                        host='ec2-107-22-169-45.compute-1.amazonaws.com',
+                                        port='5432',
+                                        sslmode='require')
+                cur = conn.cursor()
+                query = sql.SQL("SELECT item FROM {};") \
+                    .format(sql.Identifier(table))
+
+                cur.execute(query)
+
+                for table in cur.fetchall():
+                    Log.debug(table)
+                    self.send_message(table)
+
                 conn.commit()
                 conn.close()

@@ -20,8 +20,8 @@
       <file leaf-file-name="RequestProcessor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/reminderbot/src/processors/RequestProcessor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="514">
-              <caret line="72" column="43" selection-start-line="72" selection-start-column="43" selection-end-line="72" selection-end-column="43" />
+            <state relative-caret-position="503">
+              <caret line="118" column="35" selection-start-line="118" selection-start-column="35" selection-end-line="118" selection-end-column="35" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -32,8 +32,8 @@
       <file leaf-file-name="PostgresConnector.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reminderbot/src/database/PostgresConnector.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="14" selection-end-column="50" />
+            <state relative-caret-position="315">
+              <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="33" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -290,12 +290,12 @@
       <option name="presentableId" value="Default" />
       <updated>1531192141379</updated>
       <workItem from="1531192143036" duration="450000" />
-      <workItem from="1531461209408" duration="18960000" />
+      <workItem from="1531461209408" duration="22484000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19410000" />
+    <option name="totallyTimeSpent" value="22934000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1276" height="777" extended-state="0" />
@@ -398,8 +398,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/reminderbot/src/database/PostgresConnector.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="14" selection-end-column="50" />
+        <state relative-caret-position="315">
+          <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="33" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -408,8 +408,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/reminderbot/src/processors/RequestProcessor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="72" column="43" selection-start-line="72" selection-start-column="43" selection-end-line="72" selection-end-column="43" />
+        <state relative-caret-position="503">
+          <caret line="118" column="35" selection-start-line="118" selection-start-column="35" selection-end-line="118" selection-end-column="35" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
