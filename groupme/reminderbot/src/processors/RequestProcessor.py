@@ -1,10 +1,13 @@
 import requests
 import os
+import logging
+
 
 class RequestProcessor:
 
     def __init__(self):
         print("Processing Requests...")
+
 
     def getResponse(self, request_params):
 
@@ -18,6 +21,7 @@ class RequestProcessor:
         longitude = coordinates['lng']
         return latitude, longitude
 
+
     def send_message(self, msg):
         url = 'https://api.groupme.com/v3/bots/post'
 
@@ -28,15 +32,12 @@ class RequestProcessor:
 
         botRequest = requests.post(url, post_params)
         msg = "{}".format(botRequest)
-        print(msg)
+
 
     def printRecentMessages(self, data):
-        # request_params = {
-        #     'token': os.getenv('ACCESS_TOKEN')
-        # }
-        print(data)
+        logging.debug("printRecentMessages {}".format(data))
         message = data['text']
-        print(message)
+        logging.debug("messages {}".format(message))
         reminderBotRq = message.split()
         if reminderBotRq[0].lower() == "reminderbot":
             if reminderBotRq[1].lower() == "weather":
