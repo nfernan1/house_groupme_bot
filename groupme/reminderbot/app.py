@@ -1,9 +1,8 @@
 import os
-import sys
 import requests
-import logging
 from flask import Flask, request
 from .src.processors.RequestProcessor import RequestProcessor
+from .src.controllers.Log import Log
 
 app = Flask(__name__)
 
@@ -16,7 +15,7 @@ def index():
 @app.route('/', methods=['POST'])
 def webhook():
     data = request.get_json()
-    logging.debug('Received {}'.format(data))
+    Log.debug('Received {}'.format(data))
 
     # We don't want to reply to ourselves!
     if data['name'].lower() != 'reminderbot':
@@ -37,13 +36,6 @@ def send_message(msg):
 
     botRequest = requests.post(url, post_params)
     msg = "{}".format(botRequest)
-    print(msg)
-
-
-def log(msg):
-    print(str(msg))
-    sys.stdout.flush()
-
 
 if __name__ == "__main__":
     app.run(debug=True, use_reloader=True)
