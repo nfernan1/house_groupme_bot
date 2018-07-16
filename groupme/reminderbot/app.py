@@ -3,7 +3,7 @@ import sys
 import requests
 import logging
 from flask import Flask, request
-from reminderbot import RequestProcessor
+from .src.processors.RequestProcessor import RequestProcessor
 
 app = Flask(__name__)
 
