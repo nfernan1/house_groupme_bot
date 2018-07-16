@@ -1,6 +1,5 @@
-import os
 import requests
-import time
+import os
 
 class RequestProcessor:
 
@@ -9,8 +8,7 @@ class RequestProcessor:
 
     def getResponse(self, request_params):
 
-        response = requests.get('https://api.groupme.com/v3/groups/41786620/messages',
-                                         request_params)
+        response = requests.get('https://api.groupme.com/v3/groups/41786620/messages', request_params)
         return response
 
     def getCoordinates(self, city):
@@ -20,28 +18,35 @@ class RequestProcessor:
         longitude = coordinates['lng']
         return latitude, longitude
 
-    def printRecentMessages(self):
-        request_params = {'token': os.getenv("ACCESS_TOKEN")}
+    def send_message(self, msg):
+        url = 'https://api.groupme.com/v3/bots/post'
 
-        while True:
-            response = self.getResponse(request_params);
-            if response.status_code == 200:
-                messages = response.json()['response']['messages']
-                for message in messages:
-                    reminderBotRq = message['text'].split()
-                    if reminderBotRq[0].lower() == "reminderbot":
-                        if reminderBotRq[1].lower() == "weather":
-                            city = ""
-                            for cityName in reminderBotRq[2:]:
-                                city += cityName
+        post_params = {
+            'bot_id': os.getenv('BOT_ID'),
+            'text': msg,
+        }
 
-                            lat = str(self.getCoordinates(cityName)[0])
-                            lng = str(self.getCoordinates(cityName)[1])
-                            weather_response = requests.get('https://api.weather.gov/points/' + lat + ',' + lng + '/forecast').json()
-                            current_weather = weather_response['properties']['periods'][0]['detailedForecast']
+        botRequest = requests.post(url, post_params)
+        msg = "{}".format(botRequest)
+        print(msg)
 
-                            # Send the response to the group
-                            post_params = { 'bot_id' : os.getenv("BOT_ID"), 'text': current_weather }
-                            requests.post('https://api.groupme.com/v3/bots/post', post_params)
-                            request_params['since_id'] = message['id']
-                            break
+    def printRecentMessages(self, data):
+        # request_params = {
+        #     'token': os.getenv('ACCESS_TOKEN')
+        # }
+        print(data)
+        message = data['text']
+        print(message)
+        reminderBotRq = message.split()
+        if reminderBotRq[0].lower() == "reminderbot":
+            if reminderBotRq[1].lower() == "weather":
+                city = ""
+                for cityName in reminderBotRq[2:]:
+                    city += cityName
+
+                lat = str(self.getCoordinates(cityName)[0])
+                lng = str(self.getCoordinates(cityName)[1])
+                weather_response = requests.get('https://api.weather.gov/points/' + lat + ',' + lng + '/forecast').json()
+                current_weather = weather_response['properties']['periods'][0]['detailedForecast']
+
+                self.send_message(current_weather)
