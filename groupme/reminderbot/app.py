@@ -28,7 +28,7 @@ def webhook():
     rp.printRecentMessages(data)
     return "ok", 200
 
-def send_message(self, msg):
+def send_message(msg):
     url = 'https://api.groupme.com/v3/bots/post'
 
     post_params = {
