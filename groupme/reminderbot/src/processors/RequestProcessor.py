@@ -118,9 +118,19 @@ class RequestProcessor:
                 tableItemContents = ""
                 for table in cur.fetchall():
                     tableItemContents += table[0]
-                    tableItemContents += " "
+                    tableItemContents += ", "
 
                 Log.debug("Shared: {}".format(tableItemContents))
-                self.send_message("Shared: {},".format(tableItemContents))
+                self.send_message("Shared: {}".format(tableItemContents))
                 conn.commit()
                 conn.close()
+            elif reminderBotRq[1].lower() == "help":
+                commands = "weather: reminderbot weather <city> " \
+                           "\n add: reminderbot add <item> to <list>" \
+                           "\n rm: reminderbot rm <item> from <list> " \
+                           "\n show: remidnerbot show <list>"
+
+                msg = "Commands: {}".format(commands)
+                Log.debug(msg)
+                self.send_message(msg)
+
