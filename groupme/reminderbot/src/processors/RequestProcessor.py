@@ -70,7 +70,7 @@ class RequestProcessor:
                 Log.debug("Connection: {}".format(conn))
 
                 addUser = data['name']
-                sql = """INSERT INTO shared(addUser, itemName) VALUES(%s);"""
+                sql = """INSERT INTO shared VALUES(%s);"""
                 cur = conn.createCursor()
                 Log.debug("User: {} Item: {}".format(addUser, itemName))
                 cur.execute(sql, (addUser, itemName))
