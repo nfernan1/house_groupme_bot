@@ -1,6 +1,7 @@
 import requests
 import os
-import groupme.reminderbot.src.controllers.Log import Log
+from ..controllers.Log import Log
+from ..database.PostgresConnector import PostgresConnector
 
 
 class RequestProcessor:
@@ -41,9 +42,9 @@ class RequestProcessor:
         reminderBotRq = message.split()
         if reminderBotRq[0].lower() == "reminderbot":
             if reminderBotRq[1].lower() == "weather":
-                city = ""
-                for cityName in reminderBotRq[2:]:
-                    city += cityName
+                cityName = ""
+                for city in reminderBotRq[2:]:
+                    cityName += city
 
                 lat = str(self.getCoordinates(cityName)[0])
                 lng = str(self.getCoordinates(cityName)[1])
@@ -51,3 +52,16 @@ class RequestProcessor:
                 current_weather = weather_response['properties']['periods'][0]['detailedForecast']
                 Log.debug("WeatherRs: {}".format(current_weather))
                 self.send_message(current_weather)
+
+            elif reminderBotRq[1].lower() == "weather":
+                itemName = ""
+                for item in reminderBotRq[2:]:
+                    if item != "to":
+                        item += itemName
+
+                addUser = data['name']
+                sql = """INSERT INTO shared(addUser, itemName) VALUES(%s) RETURNING vendor_id;"""
+                database = PostgresConnector()
+                cur = database.createCursor()
+                cur.execute(sql, (addUser, itemName))
+                database.commit()
