@@ -1,6 +1,6 @@
 import requests
 import os
-import logging
+import groupme.reminderbot.src.controllers.Log import Log
 
 
 class RequestProcessor:
@@ -35,9 +35,9 @@ class RequestProcessor:
 
 
     def printRecentMessages(self, data):
-        logging.debug("printRecentMessages {}".format(data))
+        Log.debug("printRecentMessages {}".format(data))
         message = data['text']
-        logging.debug("messages {}".format(message))
+        Log.debug("messages {}".format(message))
         reminderBotRq = message.split()
         if reminderBotRq[0].lower() == "reminderbot":
             if reminderBotRq[1].lower() == "weather":
@@ -49,5 +49,5 @@ class RequestProcessor:
                 lng = str(self.getCoordinates(cityName)[1])
                 weather_response = requests.get('https://api.weather.gov/points/' + lat + ',' + lng + '/forecast').json()
                 current_weather = weather_response['properties']['periods'][0]['detailedForecast']
-
+                Log.debug("WeatherRs: {}".format(current_weather))
                 self.send_message(current_weather)

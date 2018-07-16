@@ -1,6 +1,7 @@
 import os
 import psycopg2
 
+
 class PostgresConnector:
 
     DATABASE_URL = os.environ['DATABASE_URL']
