@@ -1,3 +1,4 @@
+import psycopg2
 import requests
 import os
 from ..controllers.Log import Log
@@ -59,9 +60,19 @@ class RequestProcessor:
                     if item != "to":
                         item += itemName
 
+                DATABASE_URL = os.environ['DATABASE_URL']
+                conn = psycopg2.connect(database=DATABASE_URL,
+                                             user='liomjizjcckrtw',
+                                             password='aa34a6b5ee9b3e0d8a945a4413d5479908a1d44cbc987a4f5060840c1d680412',
+                                             host='ec2-107-22-169-45.compute-1.amazonaws.com',
+                                             port='5432',
+                                             sslmode='require')
+                Log.debug("Connection: {}".format(conn))
+
                 addUser = data['name']
-                sql = """INSERT INTO shared(addUser, itemName) VALUES(%s) RETURNING vendor_id;"""
-                database = PostgresConnector()
-                cur = database.createCursor()
+                sql = """INSERT INTO shared(addUser, itemName) VALUES(%s);"""
+                cur = conn.createCursor()
+                Log.debug("User: {} Item: {}".format(addUser, itemName))
                 cur.execute(sql, (addUser, itemName))
-                database.commit()
+                conn.commit()
+                conn.close()
