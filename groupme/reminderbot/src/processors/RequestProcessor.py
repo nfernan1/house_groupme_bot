@@ -34,23 +34,19 @@ class RequestProcessor:
         # request_params = {
         #     'token': os.getenv('ACCESS_TOKEN')
         # }
+        print(data)
+        message = data['text']
+        print(message)
+        reminderBotRq = message.split()
+        if reminderBotRq[0].lower() == "reminderbot":
+            if reminderBotRq[1].lower() == "weather":
+                city = ""
+                for cityName in reminderBotRq[2:]:
+                    city += cityName
 
-        while True:
-            response = self.getResponse(request_params);
-            if response.status_code == 200:
-                message = data['text']
-                print(message)
-                reminderBotRq = message.split()
-                if reminderBotRq[0].lower() == "reminderbot":
-                    if reminderBotRq[1].lower() == "weather":
-                        city = ""
-                        for cityName in reminderBotRq[2:]:
-                            city += cityName
+                lat = str(self.getCoordinates(cityName)[0])
+                lng = str(self.getCoordinates(cityName)[1])
+                weather_response = requests.get('https://api.weather.gov/points/' + lat + ',' + lng + '/forecast').json()
+                current_weather = weather_response['properties']['periods'][0]['detailedForecast']
 
-                        lat = str(self.getCoordinates(cityName)[0])
-                        lng = str(self.getCoordinates(cityName)[1])
-                        weather_response = requests.get('https://api.weather.gov/points/' + lat + ',' + lng + '/forecast').json()
-                        current_weather = weather_response['properties']['periods'][0]['detailedForecast']
-
-                        self.send_message(current_weather)
-                        break
+                self.send_message(current_weather)
