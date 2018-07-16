@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c50fac93-a8f1-4180-a0f4-dc49966eadec" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reminderbot/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/reminderbot/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reminderbot/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/reminderbot/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reminderbot/src/processors/RequestProcessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/reminderbot/src/processors/RequestProcessor.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,11 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="RequestProcessor.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RequestProcessor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/reminderbot/src/processors/RequestProcessor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="20" column="4" lean-forward="true" selection-start-line="20" selection-start-column="4" selection-end-line="30" selection-end-column="18" />
+            <state relative-caret-position="334">
+              <caret line="39" column="31" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -29,14 +32,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reminderbot/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+            <state relative-caret-position="147">
+              <caret line="20" column="6" lean-forward="true" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/reminderbot/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="25" selection-start-column="25" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -75,8 +87,12 @@
         <option value="$PROJECT_DIR$/src/reminderbot/AppMain" />
         <option value="$PROJECT_DIR$/src/reminderbot/app.py" />
         <option value="$PROJECT_DIR$/app.py" />
-        <option value="$PROJECT_DIR$/reminderbot/src/processors/RequestProcessor.py" />
+        <option value="$PROJECT_DIR$/reminderbot/src/controllers/Logger.py" />
+        <option value="$PROJECT_DIR$/reminderbot/src/processors/__init__.py" />
+        <option value="$PROJECT_DIR$/reminderbot/__init__.py" />
+        <option value="$PROJECT_DIR$/reminderbot/src/controllers/__init__.py" />
         <option value="$PROJECT_DIR$/reminderbot/app.py" />
+        <option value="$PROJECT_DIR$/reminderbot/src/processors/RequestProcessor.py" />
       </list>
     </option>
   </component>
@@ -118,6 +134,13 @@
               <item name="groupme" type="462c0819:PsiDirectoryNode" />
               <item name="reminderbot" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="groupme" type="b2602c69:ProjectViewProjectNode" />
+              <item name="groupme" type="462c0819:PsiDirectoryNode" />
+              <item name="reminderbot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="processors" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -256,12 +279,12 @@
       <option name="presentableId" value="Default" />
       <updated>1531192141379</updated>
       <workItem from="1531192143036" duration="450000" />
-      <workItem from="1531461209408" duration="11004000" />
+      <workItem from="1531461209408" duration="12039000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11454000" />
+    <option name="totallyTimeSpent" value="12489000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1276" height="777" extended-state="0" />
@@ -280,7 +303,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32941177" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.24959481" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24959481" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -354,9 +377,6 @@
     <entry file="file://$PROJECT_DIR$/reminderbot/src/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/reminderbot/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/reminderbot/src/database/PostgresConnector.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -367,22 +387,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reminderbot/src/processors/RequestProcessor.py">
+    <entry file="file://$PROJECT_DIR$/reminderbot/src/controllers/Logger.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="20" column="4" lean-forward="true" selection-start-line="20" selection-start-column="4" selection-end-line="30" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reminderbot/src/controllers/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="42" selection-start-column="36" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/reminderbot/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+        <state relative-caret-position="147">
+          <caret line="20" column="6" lean-forward="true" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reminderbot/src/processors/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reminderbot/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="25" selection-start-column="25" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reminderbot/src/processors/RequestProcessor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="39" column="31" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
