@@ -1,6 +1,9 @@
+import psycopg2
+from psycopg2 import sql
 import requests
 import os
-import logging
+from ..controllers.Log import Log
+from ..database.PostgresConnector import PostgresConnector
 
 
 class RequestProcessor:
@@ -35,19 +38,89 @@ class RequestProcessor:
 
 
     def printRecentMessages(self, data):
-        logging.debug("printRecentMessages {}".format(data))
+        Log.debug("printRecentMessages {}".format(data))
         message = data['text']
-        logging.debug("messages {}".format(message))
+        Log.debug("messages {}".format(message))
         reminderBotRq = message.split()
         if reminderBotRq[0].lower() == "reminderbot":
             if reminderBotRq[1].lower() == "weather":
-                city = ""
-                for cityName in reminderBotRq[2:]:
-                    city += cityName
+                cityName = ""
+                for city in reminderBotRq[2:]:
+                    cityName += city
 
                 lat = str(self.getCoordinates(cityName)[0])
                 lng = str(self.getCoordinates(cityName)[1])
                 weather_response = requests.get('https://api.weather.gov/points/' + lat + ',' + lng + '/forecast').json()
                 current_weather = weather_response['properties']['periods'][0]['detailedForecast']
-
+                Log.debug("WeatherRs: {}".format(current_weather))
                 self.send_message(current_weather)
+
+            elif reminderBotRq[1].lower() == "add":
+                itemName = ""
+                for item in reminderBotRq[2:]:
+                    if item == "to":
+                        break
+                    itemName += item
+                    itemName += " "
+
+                table = reminderBotRq[-1]
+                addUser = data['name']
+                conn = psycopg2.connect(database='devlpvf6ln40ak',
+                                         user='liomjizjcckrtw',
+                                         password='aa34a6b5ee9b3e0d8a945a4413d5479908a1d44cbc987a4f5060840c1d680412',
+                                         host='ec2-107-22-169-45.compute-1.amazonaws.com',
+                                         port='5432',
+                                         sslmode='require')
+                cur = conn.cursor()
+                query = sql.SQL("INSERT INTO {} (adduser, item) VALUES(%s, %s);")\
+                            .format(sql.Identifier(table))
+
+                cur.execute(query, (addUser, itemName))
+                conn.commit()
+                conn.close()
+            elif reminderBotRq[1].lower() == "rm":
+                itemName = ""
+                for item in reminderBotRq[2:]:
+                    if item == "from":
+                        break
+                    itemName += item
+                    itemName += " "
+
+                table = reminderBotRq[-1]
+                conn = psycopg2.connect(database='devlpvf6ln40ak',
+                                        user='liomjizjcckrtw',
+                                        password='aa34a6b5ee9b3e0d8a945a4413d5479908a1d44cbc987a4f5060840c1d680412',
+                                        host='ec2-107-22-169-45.compute-1.amazonaws.com',
+                                        port='5432',
+                                        sslmode='require')
+                cur = conn.cursor()
+                query = sql.SQL("DELETE FROM {} WHERE item = %s;") \
+                    .format(sql.Identifier(table))
+
+                cur.execute(query, (itemName, ))
+                conn.commit()
+                conn.close()
+            elif reminderBotRq[1].lower() == "show":
+
+                table = reminderBotRq[-1]
+                conn = psycopg2.connect(database='devlpvf6ln40ak',
+                                        user='liomjizjcckrtw',
+                                        password='aa34a6b5ee9b3e0d8a945a4413d5479908a1d44cbc987a4f5060840c1d680412',
+                                        host='ec2-107-22-169-45.compute-1.amazonaws.com',
+                                        port='5432',
+                                        sslmode='require')
+                cur = conn.cursor()
+                query = sql.SQL("SELECT item FROM {};") \
+                    .format(sql.Identifier(table))
+
+                cur.execute(query)
+
+                tableItemContents = ""
+                for table in cur.fetchall():
+                    tableItemContents += table[0]
+                    tableItemContents += " "
+
+                Log.debug("Shared: {}".format(tableItemContents))
+                self.send_message("Shared: {},".format(tableItemContents))
+                conn.commit()
+                conn.close()
