@@ -114,11 +114,14 @@ class RequestProcessor:
                                         port='5432',
                                         sslmode='require')
                 cur = conn.cursor()
-                query = sql.SQL("SELECT item FROM {};") \
-                    .format(sql.Identifier(tableName))
+                if tableName == "all":
+                    query = sql.SQL("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';") \
+                        .format(sql.Identifier(tableName))
+                else:
+                    query = sql.SQL("SELECT item FROM {};") \
+                        .format(sql.Identifier(tableName))
 
                 cur.execute(query)
-
                 tableItemContents = ""
                 for table in cur.fetchall():
                     tableItemContents += table[0]
@@ -131,7 +134,8 @@ class RequestProcessor:
                 commands = "weather: reminderbot weather <city> " \
                            "\n add: reminderbot add <item> to <list>" \
                            "\n rm: reminderbot rm <item> from <list> " \
-                           "\n show: reminderbot show <list>"
+                           "\n show: reminderbot show <list>" \
+                           "\n reminderbot show all (lists all lists already created)"
 
                 msg = "Commands: {}".format(commands)
                 self.send_message(msg)
