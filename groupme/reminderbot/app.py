@@ -18,9 +18,9 @@ def webhook():
     Log.debug('Received {}'.format(data))
 
     # We don't want to reply to ourselves!
-    if data['name'].lower() != 'reminderbot':
-        msg = '{}, you sent "{}".'.format(data['name'], data['text'])
-        send_message(msg)
+    # if data['name'].lower() != 'reminderbot':
+    #     msg = '{}, you sent "{}".'.format(data['name'], data['text'])
+    #     send_message(msg)
     rp = RequestProcessor()
     rp.printRecentMessages(data)
     return "ok", 200
