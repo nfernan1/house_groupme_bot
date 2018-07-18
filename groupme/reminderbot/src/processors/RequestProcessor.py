@@ -72,10 +72,15 @@ class RequestProcessor:
                                          port='5432',
                                          sslmode='require')
                 cur = conn.cursor()
-                query = sql.SQL("INSERT INTO {} (adduser, item) VALUES(%s, %s);")\
+
+                createTableQuery = sql.SQL("CREATE TABLE IF NOT EXISTS {} (systemid serial PRIMARY KEY, adduser Text, item Text);") \
+                    .format(sql.Identifier(table))
+
+                cur.execute(createTableQuery)
+                insertDataQuery = sql.SQL("INSERT INTO {} (adduser, item) VALUES(%s, %s);")\
                             .format(sql.Identifier(table))
 
-                cur.execute(query, (addUser, itemName))
+                cur.execute(insertDataQuery, (addUser, itemName))
                 conn.commit()
                 conn.close()
             elif reminderBotRq[1].lower() == "rm":
