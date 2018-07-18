@@ -29,7 +29,8 @@ class RequestProcessor:
         url = 'https://api.groupme.com/v3/bots/post'
 
         post_params = {
-            'bot_id': os.getenv('BOT_ID'),
+            #'bot_id': os.getenv('BOT_ID'),
+            'bot_id': os.getenv('HOUSE_BOT_ID'),
             'text': msg,
         }
 
@@ -42,7 +43,7 @@ class RequestProcessor:
         message = data['text']
         Log.debug("messages {}".format(message))
         reminderBotRq = message.split()
-        if reminderBotRq[0].lower() == "reminderbot":
+        if reminderBotRq[0].lower().contains("bot"):
             if reminderBotRq[1].lower() == "weather":
                 cityName = ""
                 for city in reminderBotRq[2:]:
@@ -135,7 +136,7 @@ class RequestProcessor:
                            "\n add: reminderbot add <item> to <list>" \
                            "\n rm: reminderbot rm <item> from <list> " \
                            "\n show: reminderbot show <list>" \
-                           "\n reminderbot show all (lists all lists already created)"
+                           "\n\t reminderbot show all (lists all lists already created)"
 
                 msg = "Commands: {}".format(commands)
                 self.send_message(msg)
