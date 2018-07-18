@@ -33,8 +33,8 @@ class RequestProcessor:
             'text': msg,
         }
 
-        botRequest = requests.post(url, post_params)
-        msg = "{}".format(botRequest)
+        requests.post(url, post_params)
+        Log.debug(msg)
 
 
     def printRecentMessages(self, data):
@@ -52,7 +52,6 @@ class RequestProcessor:
                 lng = str(self.getCoordinates(cityName)[1])
                 weather_response = requests.get('https://api.weather.gov/points/' + lat + ',' + lng + '/forecast').json()
                 current_weather = weather_response['properties']['periods'][0]['detailedForecast']
-                Log.debug("WeatherRs: {}".format(current_weather))
                 self.send_message(current_weather)
 
             elif reminderBotRq[1].lower() == "add":
@@ -125,8 +124,7 @@ class RequestProcessor:
                     tableItemContents += table[0]
                     tableItemContents += ", "
 
-                Log.debug("Shared: {}".format(tableItemContents))
-                self.send_message("Shared: {}".format(tableItemContents))
+                self.send_message("{}: {}".format(table, tableItemContents))
                 conn.commit()
                 conn.close()
             elif reminderBotRq[1].lower() == "help":
@@ -136,6 +134,5 @@ class RequestProcessor:
                            "\n show: reminderbot show <list>"
 
                 msg = "Commands: {}".format(commands)
-                Log.debug(msg)
                 self.send_message(msg)
 
