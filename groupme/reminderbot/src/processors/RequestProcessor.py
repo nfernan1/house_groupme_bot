@@ -4,6 +4,7 @@ import requests
 import os
 from ..controllers.Log import Log
 from ..database.PostgresConnector import PostgresConnector
+from pygeocoder import Geocoder
 
 
 class RequestProcessor:
@@ -18,11 +19,9 @@ class RequestProcessor:
         return response
 
     def getCoordinates(self, city):
-        geocode_response = requests.get("http://maps.google.com/maps/api/geocode/json?address=" + city).json()
-        coordinates = geocode_response['results'][0]['geometry']['location']
-        latitude = coordinates['lat']
-        longitude = coordinates['lng']
-        return latitude, longitude
+        geocode = Geocoder.geocode(city)
+        coordinates = geocode.coordinates
+        return coordinates
 
 
     def send_message(self, msg):
