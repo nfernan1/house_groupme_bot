@@ -43,7 +43,7 @@ class RequestProcessor:
         message = data['text']
         Log.debug("messages {}".format(message))
         reminderBotRq = message.split()
-        if reminderBotRq[0].lower().contains("bot"):
+        if "bot" in reminderBotRq[0].lower():
             if reminderBotRq[1].lower() == "weather":
                 cityName = ""
                 for city in reminderBotRq[2:]:
