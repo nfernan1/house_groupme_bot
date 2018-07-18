@@ -20,8 +20,8 @@
       <file leaf-file-name="RequestProcessor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/reminderbot/src/processors/RequestProcessor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="138" column="45" selection-start-line="138" selection-start-column="45" selection-end-line="138" selection-end-column="45" />
+            <state relative-caret-position="480">
+              <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -290,12 +290,12 @@
       <option name="presentableId" value="Default" />
       <updated>1531192141379</updated>
       <workItem from="1531192143036" duration="450000" />
-      <workItem from="1531461209408" duration="27055000" />
+      <workItem from="1531461209408" duration="27370000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27505000" />
+    <option name="totallyTimeSpent" value="27820000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1276" height="777" extended-state="0" />
@@ -408,8 +408,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/reminderbot/src/processors/RequestProcessor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="138" column="45" selection-start-line="138" selection-start-column="45" selection-end-line="138" selection-end-column="45" />
+        <state relative-caret-position="480">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
