@@ -62,7 +62,7 @@ class RequestProcessor:
                     itemName += item
                     itemName += " "
 
-                table = reminderBotRq[-1]
+                tableName = reminderBotRq[-1]
                 addUser = data['name']
                 conn = psycopg2.connect(database='devlpvf6ln40ak',
                                          user='liomjizjcckrtw',
@@ -73,11 +73,11 @@ class RequestProcessor:
                 cur = conn.cursor()
 
                 createTableQuery = sql.SQL("CREATE TABLE IF NOT EXISTS {} (systemid serial PRIMARY KEY, adduser Text, item Text);") \
-                    .format(sql.Identifier(table))
+                    .format(sql.Identifier(tableName))
 
                 cur.execute(createTableQuery)
                 insertDataQuery = sql.SQL("INSERT INTO {} (adduser, item) VALUES(%s, %s);")\
-                            .format(sql.Identifier(table))
+                            .format(sql.Identifier(tableName))
 
                 cur.execute(insertDataQuery, (addUser, itemName))
                 conn.commit()
@@ -90,7 +90,7 @@ class RequestProcessor:
                     itemName += item
                     itemName += " "
 
-                table = reminderBotRq[-1]
+                tableName = reminderBotRq[-1]
                 conn = psycopg2.connect(database='devlpvf6ln40ak',
                                         user='liomjizjcckrtw',
                                         password='aa34a6b5ee9b3e0d8a945a4413d5479908a1d44cbc987a4f5060840c1d680412',
@@ -99,14 +99,14 @@ class RequestProcessor:
                                         sslmode='require')
                 cur = conn.cursor()
                 query = sql.SQL("DELETE FROM {} WHERE item = %s;") \
-                    .format(sql.Identifier(table))
+                    .format(sql.Identifier(tableName))
 
                 cur.execute(query, (itemName, ))
                 conn.commit()
                 conn.close()
             elif reminderBotRq[1].lower() == "show":
 
-                table = reminderBotRq[-1]
+                tableName = reminderBotRq[-1]
                 conn = psycopg2.connect(database='devlpvf6ln40ak',
                                         user='liomjizjcckrtw',
                                         password='aa34a6b5ee9b3e0d8a945a4413d5479908a1d44cbc987a4f5060840c1d680412',
@@ -115,7 +115,7 @@ class RequestProcessor:
                                         sslmode='require')
                 cur = conn.cursor()
                 query = sql.SQL("SELECT item FROM {};") \
-                    .format(sql.Identifier(table))
+                    .format(sql.Identifier(tableName))
 
                 cur.execute(query)
 
@@ -124,7 +124,7 @@ class RequestProcessor:
                     tableItemContents += table[0]
                     tableItemContents += ", "
 
-                self.send_message("{}: {}".format(table, tableItemContents))
+                self.send_message("{}: {}".format(tableName, tableItemContents))
                 conn.commit()
                 conn.close()
             elif reminderBotRq[1].lower() == "help":
