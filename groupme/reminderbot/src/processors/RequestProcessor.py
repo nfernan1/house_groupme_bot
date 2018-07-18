@@ -43,7 +43,7 @@ class RequestProcessor:
         message = data['text']
         Log.debug("messages {}".format(message))
         reminderBotRq = message.split()
-        if "bot" in reminderBotRq[0].lower():
+        if "house" in reminderBotRq[0].lower():
             if reminderBotRq[1].lower() == "weather":
                 cityName = ""
                 for city in reminderBotRq[2:]:
@@ -132,11 +132,11 @@ class RequestProcessor:
                 conn.commit()
                 conn.close()
             elif reminderBotRq[1].lower() == "help":
-                commands = "weather: reminderbot weather <city> " \
-                           "\n add: reminderbot add <item> to <list>" \
-                           "\n rm: reminderbot rm <item> from <list> " \
-                           "\n show: reminderbot show <list>" \
-                           "\n\t reminderbot show all (lists all lists already created)"
+                commands = "weather: housebot/boy weather <city> " \
+                           "\n add: housebot/boy add <item> to <list>" \
+                           "\n rm: housebot/boy rm <item> from <list> " \
+                           "\n show: housebot/boy show <list>" \
+                           "\n\t housebot/boy show all (lists all lists already created)"
 
                 msg = "Commands: {}".format(commands)
                 self.send_message(msg)
