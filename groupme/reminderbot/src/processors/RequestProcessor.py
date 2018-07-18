@@ -128,7 +128,7 @@ class RequestProcessor:
                 commands = "weather: reminderbot weather <city> " \
                            "\n add: reminderbot add <item> to <list>" \
                            "\n rm: reminderbot rm <item> from <list> " \
-                           "\n show: remidnerbot show <list>"
+                           "\n show: reminderbot show <list>"
 
                 msg = "Commands: {}".format(commands)
                 Log.debug(msg)
