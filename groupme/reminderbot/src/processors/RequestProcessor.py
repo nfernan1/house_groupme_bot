@@ -29,8 +29,8 @@ class RequestProcessor:
         url = 'https://api.groupme.com/v3/bots/post'
 
         post_params = {
-            #'bot_id': os.getenv('BOT_ID'),
-            'bot_id': os.getenv('HOUSE_BOT_ID'),
+            'bot_id': os.getenv('BOT_ID'),
+            #'bot_id': os.getenv('HOUSE_BOT_ID'),
             'text': msg,
         }
 
