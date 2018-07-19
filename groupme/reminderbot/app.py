@@ -22,8 +22,7 @@ def webhook():
     #     msg = '{}, you sent "{}".'.format(data['name'], data['text'])
     #     send_message(msg)
     rp = RequestProcessor()
-    rp.printRecentMessages(data)
-    return "ok", 200
+    return rp.printRecentMessages(data)
 
 
 def send_message(msg):
